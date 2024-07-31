@@ -1,0 +1,38 @@
+package ru.anikeeva.kinopoisk.entities;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@Entity
+@Table(name="review")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Review {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="assessment")
+    private double assessment;
+
+    @Column(name="message")
+    private String message;
+
+    @Column(name="date")
+    private LocalDate date;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
+
+    @ManyToOne
+    @JoinColumn(name = "critic_id")
+    private Critic critic;
+}
