@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.anikeeva.kinopoisk.entities.Critic;
 import ru.anikeeva.kinopoisk.entities.Movie;
-import ru.anikeeva.kinopoisk.entities.Review;
 
 import java.time.LocalDate;
 
