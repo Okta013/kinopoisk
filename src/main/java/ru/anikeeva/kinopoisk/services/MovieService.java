@@ -11,6 +11,7 @@ import ru.anikeeva.kinopoisk.repositories.ReviewRepository;
 import ru.anikeeva.kinopoisk.utils.MappingUtils;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,6 +31,7 @@ public class MovieService {
 
     public MovieDTO createMovie(MovieDTO movieDTO) {
         Movie movie = mappingUtils.mapToMovie(movieDTO);
+        if (Objects.isNull(movie.getRating())) movie.setRating(5);
         movie = movieRepository.save(movie);
         return mappingUtils.mapToMovieDTO(movie);
     }
