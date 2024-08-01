@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-data-movie" author="Ananan">
+        <insert tableName="movie">
+            <column name="name" value="1+1" />
+            <column name="description" value="An aristocrat in a wheelchair hires an ex-convict as a nurse. Sparkling French comedy with Omar Si" />
+            <column name="duration" value="01:52:00" />
+            <column name="rating" value="" />
+            <column name="premiered" value="2011" />
+            <column name="genre_id" value="8" />
+        </insert>
+
+        <insert tableName="movie">
+            <column name="name" value="Interstellar" />
+            <column name="description" value="When drought, dust storms and plant extinction lead humanity to a food crisis, a team of researchers and scientists goes through a wormhole" />
+            <column name="duration" value="02:49:00" />
+            <column name="rating" value="4.8" />
+            <column name="premiered" value="2014" />
+            <column name="genre_id" value="10" />
+        </insert>
+
+        <insert tableName="movie">
+            <column name="name" value="Escape from Shawshank" />
+            <column name="description" value="The film tells the story of banker Andy Dufresne (Tim Robbins), who is sentenced to life in Shawshank State Penitentiary for the murders of his wife and her lover, despite his claims of innocence." />
+            <column name="duration" value="02:22:00" />
+            <column name="rating" value="5" />
+            <column name="premiered" value="1994" />
+            <column name="genre_id" value="5" />
+        </insert>
+
+        <insert tableName="movie">
+            <column name="name" value="A shot into the void" />
+            <column name="description" value="A jailed broker has to live by the new rules." />
+            <column name="duration" value="02:00:00" />
+            <column name="rating" value="4.2" />
+            <column name="premiered" value="2015" />
+            <column name="genre_id" value="1" />
+        </insert>
+
+        <insert tableName="movie">
+            <column name="name" value="Imposible" />
+            <column name="description" value="A family of holiday makers in Thailand is hit by a powerful tsunami." />
+            <column name="duration" value="01:49:00" />
+            <column name="rating" value="3.9" />
+            <column name="premiered" value="2012" />
+            <column name="genre_id" value="2" />
+        </insert>
+
+        <insert tableName="movie">
+            <column name="name" value="Meet Joe Black" />
+            <column name="description" value="American romantic fantasy drama film directed and produced by Martin Brest, starring Brad Pitt, Anthony Hopkins, and Claire Forlani. " />
+            <column name="duration" value="02:58:00" />
+            <column name="rating" value="4.1" />
+            <column name="premiered" value="1998" />
+            <column name="genre_id" value="3" />
+        </insert>
+
+        <insert tableName="movie">
+            <column name="name" value="Cast Away" />
+            <column name="description" value="American epic survival drama film. A FedEx executive must transform himself physically and emotionally to survive a crash landing on a deserted island." />
+            <column name="duration" value="02:23:00" />
+            <column name="rating" value="4.3" />
+            <column name="premiered" value="2000" />
+            <column name="genre_id" value="9" />
+        </insert>
+
+        <insert tableName="movie">
+            <column name="name" value="Eternal Sunshine of the Spotless Mind" />
+            <column name="description" value="Science-fiction comedy-drama film directed by Michel Gondry, written by Charlie Kaufman and starring Jim Carrey and Kate Winslet (the former in one of his more serious roles)." />
+            <column name="duration" value="01:48:00" />
+            <column name="rating" value="3.7" />
+            <column name="premiered" value="2004" />
+            <column name="genre_id" value="4" />
+        </insert>
+
+        <insert tableName="movie">
+            <column name="name" value="The Game" />
+            <column name="description" value="American thriller film directed by David Fincher, starring Michael Douglas, Sean Penn, Deborah Kara Unger and James Rebhorn and produced by Propaganda Films and PolyGram Filmed Entertainment." />
+            <column name="duration" value="02:09:00" />
+            <column name="rating" value="4.2" />
+            <column name="premiered" value="1997" />
+            <column name="genre_id" value="7" />
+        </insert>
+
+        <insert tableName="movie">
+            <column name="name" value="One Flew Over the Cuckoo's Nest" />
+            <column name="description" value="American psychological drama film directed by Miloš Forman, based on the 1962 novel of the same name by Ken Kesey. " />
+            <column name="duration" value="02:13:00" />
+            <column name="rating" value="" />
+            <column name="premiered" value="1975" />
+            <column name="genre_id" value="6" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

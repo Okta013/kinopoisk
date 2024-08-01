@@ -18,14 +18,12 @@ import java.util.stream.Collectors;
 public class MovieService {
     private final MovieRepository movieRepository;
     private final MappingUtils mappingUtils;
-    private final GenreRepository genreRepository;
     private final ReviewRepository reviewRepository;
 
     @Autowired
     public MovieService(MovieRepository movieRepository, MappingUtils mappingUtils, GenreRepository genreRepository, ReviewRepository reviewRepository) {
         this.movieRepository = movieRepository;
         this.mappingUtils = mappingUtils;
-        this.genreRepository = genreRepository;
         this.reviewRepository = reviewRepository;
     }
 

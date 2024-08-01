@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-data-review" author="Ananan">
+        <insert tableName="review">
+            <column name="assessment" value="3.9" />
+            <column name="message" value="skjdhf jhlj" />
+            <column name="date" value="2024-03-07" />
+            <column name="movie_id" value="3" />
+            <column name="critic_id" value="2" />
+        </insert>
+
+        <insert tableName="review">
+            <column name="assessment" value="4.7" />
+            <column name="message" value="ashd jasdjlkjdlkjl" />
+            <column name="date" value="2023-09-08" />
+            <column name="movie_id" value="7" />
+            <column name="critic_id" value="10" />
+        </insert>
+
+        <insert tableName="review">
+            <column name="assessment" value="5.0" />
+            <column name="message" value="ldhf ljakdjak;a k;odaksl;dka;" />
+            <column name="date" value="2023-12-10" />
+            <column name="movie_id" value="6" />
+            <column name="critic_id" value="3" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-data-critic" author="Ananan">
+        <insert tableName="critic">
+            <column name="first_name" value="Oleg" />
+            <column name="second_name" value="Brulov" />
+            <column name="about" value="LJAdljhaljdnlajnsdlnl" />
+        </insert>
+
+        <insert tableName="critic">
+            <column name="first_name" value="Anna" />
+            <column name="second_name" value="Dolgova" />
+            <column name="about" value="lkjaslkdjakdm ansldnakl" />
+        </insert>
+
+        <insert tableName="critic">
+            <column name="first_name" value="Ivan" />
+            <column name="second_name" value="Prokhorov" />
+            <column name="about" value="lsjdflk jslkjdflkdjf" />
+        </insert>
+
+        <insert tableName="critic">
+            <column name="first_name" value="Boris" />
+            <column name="second_name" value="Mineev" />
+            <column name="about" value="oasjdjalk akljsdlkj" />
+        </insert>
+
+        <insert tableName="critic">
+            <column name="first_name" value="Elena" />
+            <column name="second_name" value="Osipova" />
+            <column name="about" value="ljasdklj lakjsdlkjal kjslkjd" />
+        </insert>
+
+        <insert tableName="critic">
+            <column name="first_name" value="Roman" />
+            <column name="second_name" value="Goncharov" />
+            <column name="about" value="lkjasdj lkajsldkj ahsjdalk" />
+        </insert>
+
+        <insert tableName="critic">
+            <column name="first_name" value="Irina" />
+            <column name="second_name" value="Lobanova" />
+            <column name="about" value="alksjdl kal;skd;l " />
+        </insert>
+
+        <insert tableName="critic">
+            <column name="first_name" value="Yulia" />
+            <column name="second_name" value="Morozova" />
+            <column name="about" value="kjnasdjk asdjlka jlk" />
+        </insert>
+
+        <insert tableName="critic">
+            <column name="first_name" value="Nikolay" />
+            <column name="second_name" value="Korolev" />
+            <column name="about" value="askjdh kjasdklj laksjdl;k;" />
+        </insert>
+
+        <insert tableName="critic">
+            <column name="first_name" value="Natalia" />
+            <column name="second_name" value="Avdeeva" />
+            <column name="about" value="aslkdj lakjsdjapoipo asdlk" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

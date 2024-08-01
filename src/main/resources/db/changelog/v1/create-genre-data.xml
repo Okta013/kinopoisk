@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-data-genre" author="Ananan">
+        <insert tableName="genre">
+            <column name="name" value="Action" />
+            <column name="description" value="The main focus is on violence: shootings, fights, chases, etc. Most militants illustrate the well-known thesis "good must be with fists."" />
+        </insert>
+
+        <insert tableName="genre">
+            <column name="name" value="Western" />
+            <column name="description" value="Western is a multifaceted phenomenon that contains a synthesis of many genres, reflects a variety of epochs and historical events. The films are dedicated to the Indian Wars, the Civil War, the Mexican Wars, rangers, the railroad, covered wagons and settlers, cattle drivers, prospectors and robbers, outcasts and criminals, hunters and shooters, chases and revenge, quest and certainly love." />
+        </insert>
+
+        <insert tableName="genre">
+            <column name="name" value="Gangster" />
+            <column name="description" value="A subgenre of crime films that tells about organized crime." />
+        </insert>
+
+        <insert tableName="genre">
+            <column name="name" value="Detective" />
+            <column name="description" value="A subgenre of the more general category of crime films. It focuses on the actions of a detective, a private investigator, or a novice detective in clarifying the mysterious circumstances of a crime by finding clues, investigations, and skillful deductions." />
+        </insert>
+
+        <insert tableName="genre">
+            <column name="name" value="Drama" />
+            <column name="description" value="It is a separate genre of films and TV series, the plot of which focuses on the conflicts of the main character with society, another hero or himself." />
+        </insert>
+
+        <insert tableName="genre">
+            <column name="name" value="Historical" />
+            <column name="description" value="A genre of feature films depicting specific historical epochs, events and personalities of the past." />
+        </insert>
+
+        <insert tableName="genre">
+            <column name="name" value="Comedy" />
+            <column name="description" value="A genre of film productions based on the aesthetic categories of satire, humor, buffoonery." />
+        </insert>
+
+        <insert tableName="genre">
+            <column name="name" value="Melodrama" />
+            <column name="description" value="Melodramatic works, as a rule, contain many emotional and tragic scenes, and they are characterized by an open confrontation between positive and negative characters." />
+        </insert>
+
+        <insert tableName="genre">
+            <column name="name" value="Musical" />
+            <column name="description" value="A genre of musical film based on singing and choreographic performances that represent a single whole and united by a single artistic idea." />
+        </insert>
+
+        <insert tableName="genre">
+            <column name="name" value="Adventure" />
+            <column name="description" value="The main character finds himself in an alien or exotic world, where numerous dangers and difficult tasks await him." />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

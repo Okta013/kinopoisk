@@ -11,5 +11,9 @@
     <include file="create-tables.xml" relativeToChangelogFile="true"/>
     <include file="create-table-movie_genre.xml" relativeToChangelogFile="true"/>
     <include file="add-column-name-to-movie.xml" relativeToChangelogFile="true"/>
+    <include file="create-genre-data.xml" relativeToChangelogFile="true"/>
+    <include file="create-movie-data.xml" relativeToChangelogFile="true"/>
+    <include file="create-critic-data.xml" relativeToChangelogFile="true"/>
+    <include file="create-review-data.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
