@@ -10,5 +10,6 @@
 
     <include file="create-tables.xml" relativeToChangelogFile="true"/>
     <include file="create-table-movie_genre.xml" relativeToChangelogFile="true"/>
+    <include file="add-column-name-to-movie.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
