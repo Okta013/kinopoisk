@@ -33,7 +33,7 @@ public class MovieService {
     }
 
     public MovieDTO getMovieById(int id) {
-        return mappingUtils.mapToMovieDTO(movieRepository.findById(id).orElse(new Movie()));
+        return mappingUtils.mapToMovieDTO(movieRepository.findById(id).orElse(null));
     }
 
     public MovieDTO updateMovie(int id, MovieDTO movieDTO) {

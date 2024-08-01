@@ -33,7 +33,7 @@ public class CriticService {
     }
 
     public CriticDTO getCriticById(int id) {
-        return mappingUtils.mapToCriticDTO(criticRepository.findById(id).orElse(new Critic()));
+        return mappingUtils.mapToCriticDTO(criticRepository.findById(id).orElse(null));
     }
 
     public CriticDTO updateCritic(int id, CriticDTO criticDTO) {

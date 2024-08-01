@@ -33,7 +33,7 @@ public class GenreService {
     }
 
     public GenreDTO getGenreById(int id) {
-        return mappingUtils.mapToGenreDTO(genreRepository.findById(id).orElse(new Genre()));
+        return mappingUtils.mapToGenreDTO(genreRepository.findById(id).orElse(null));
     }
 
     public GenreDTO updateGenre(int id, GenreDTO genreDTO) {

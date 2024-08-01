@@ -33,7 +33,7 @@ public class ReviewService {
     }
 
     public ReviewDTO getReviewById(int id) {
-        return mappingUtils.mapToReviewDTO(reviewRepository.findById(id).orElse(new Review()));
+        return mappingUtils.mapToReviewDTO(reviewRepository.findById(id).orElse(null));
     }
 
     public ReviewDTO updateReview(int id, ReviewDTO reviewDTO) {
