@@ -9,7 +9,6 @@ import lombok.Setter;
 import ru.anikeeva.kinopoisk.entities.Genre;
 import ru.anikeeva.kinopoisk.entities.Review;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +34,14 @@ public class MovieDTO {
     private double rating;
 
     @NotEmpty(message = "Date of premiered shouldn't be empty")
-    private LocalDate premiered;
+    private int premiered;
 
     private List<Genre> declaredGenres = new ArrayList<>();
 
     private List<Review> writtenReviews = new ArrayList<>();
 
     public MovieDTO(String name, String description,
-                    LocalTime duration, double rating, LocalDate premiered) {
+                    LocalTime duration, double rating, int premiered) {
         this.name = name;
         this.description = description;
         this.duration = duration;

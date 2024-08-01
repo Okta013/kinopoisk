@@ -35,7 +35,7 @@ public class Movie {
     private double rating;
 
     @Column(name="premiered")
-    private LocalDate premiered;
+    private int premiered;
 
     @ManyToMany
     @JoinTable(
