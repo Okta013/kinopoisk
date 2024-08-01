@@ -27,7 +27,7 @@ public class CriticService {
         return mappingUtils.mapToCriticDTO(critic);
     }
 
-    List<CriticDTO> getAllCritics() {
+    public List<CriticDTO> getAllCritics() {
         return criticRepository.findAll()
                 .stream().map(mappingUtils::mapToCriticDTO).collect(Collectors.toList());
     }

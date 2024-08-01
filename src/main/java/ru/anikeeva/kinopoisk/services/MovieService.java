@@ -27,7 +27,7 @@ public class MovieService {
         return mappingUtils.mapToMovieDTO(movie);
     }
 
-    List<MovieDTO> getAllMovies() {
+    public List<MovieDTO> getAllMovies() {
         return movieRepository.findAll()
                 .stream().map(mappingUtils::mapToMovieDTO).collect(Collectors.toList());
     }

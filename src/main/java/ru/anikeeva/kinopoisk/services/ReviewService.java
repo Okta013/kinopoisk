@@ -27,7 +27,7 @@ public class ReviewService {
         return mappingUtils.mapToReviewDTO(review);
     }
 
-    List<ReviewDTO> getAllReviews() {
+    public List<ReviewDTO> getAllReviews() {
         return reviewRepository.findAll()
                 .stream().map(mappingUtils::mapToReviewDTO).collect(Collectors.toList());
     }
