@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
-    List<Review> findAllByMovie(Movie movie);
+    List<Review> findByMovie(Movie movie);
 }

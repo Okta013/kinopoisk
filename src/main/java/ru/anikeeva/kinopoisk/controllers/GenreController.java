@@ -3,6 +3,7 @@ package ru.anikeeva.kinopoisk.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.anikeeva.kinopoisk.dto.GenreDTO;
+import ru.anikeeva.kinopoisk.dto.MovieDTO;
 import ru.anikeeva.kinopoisk.services.GenreService;
 
 import java.util.List;
@@ -41,4 +42,9 @@ public class GenreController {
     public void deleteGenre(@PathVariable int id) {
         genreService.deleteGenre(id);
     }
+
+//    @GetMapping("/{id}/movies")
+//    public List<MovieDTO> getMoviesGenres(@PathVariable int id) {
+//        return genreService.getAllMoviesByGenre(id);
+//    }
 }
