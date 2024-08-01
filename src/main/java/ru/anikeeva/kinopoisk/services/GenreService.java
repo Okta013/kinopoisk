@@ -27,7 +27,7 @@ public class GenreService {
         return mappingUtils.mapToGenreDTO(genre);
     }
 
-    List<GenreDTO> getAllGenres() {
+    public List<GenreDTO> getAllGenres() {
         return genreRepository.findAll()
                 .stream().map(mappingUtils::mapToGenreDTO).collect(Collectors.toList());
     }
