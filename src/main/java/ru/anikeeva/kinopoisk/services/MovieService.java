@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.anikeeva.kinopoisk.dto.MovieDTO;
 import ru.anikeeva.kinopoisk.entities.Movie;
+import ru.anikeeva.kinopoisk.repositories.GenreRepository;
 import ru.anikeeva.kinopoisk.repositories.MovieRepository;
 import ru.anikeeva.kinopoisk.utils.MappingUtils;
 
@@ -14,11 +15,13 @@ import java.util.stream.Collectors;
 public class MovieService {
     private final MovieRepository movieRepository;
     private final MappingUtils mappingUtils;
+    private final GenreRepository genreRepository;
 
     @Autowired
-    public MovieService(MovieRepository movieRepository, MappingUtils mappingUtils) {
+    public MovieService(MovieRepository movieRepository, MappingUtils mappingUtils, GenreRepository genreRepository) {
         this.movieRepository = movieRepository;
         this.mappingUtils = mappingUtils;
+        this.genreRepository = genreRepository;
     }
 
     public MovieDTO createMovie(MovieDTO movieDTO) {
@@ -47,5 +50,10 @@ public class MovieService {
 
     public void deleteMovie(int id) {
         movieRepository.deleteById(id);
+    }
+
+    public List<MovieDTO> getAllMoviesByGenre(String genreName) {
+        return movieRepository.findByGenre(genreRepository.findIdByName(genreName))
+                .stream().map(mappingUtils::mapToMovieDTO).collect(Collectors.toList());
     }
 }
