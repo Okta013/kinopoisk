@@ -48,6 +48,7 @@ public class MovieService {
                 .orElseThrow(() -> new IllegalArgumentException("Movie not found"));
         movie.setName(movieDTO.getName());
         movie.setDescription(movieDTO.getDescription());
+        movie.setRating(movieDTO.getRating());
         movieRepository.save(movie);
         return mappingUtils.mapToMovieDTO(movie);
     }
