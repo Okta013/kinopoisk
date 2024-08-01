@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovieDTO {
-    private Long id;
+    private int id;
 
     @NotEmpty(message = "Name shouldn't be empty")
     @Size(min = 2, message = "Name should be longer than 2 symbols")

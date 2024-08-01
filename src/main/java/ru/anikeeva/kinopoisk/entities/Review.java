@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name="assessment")
     private double assessment;

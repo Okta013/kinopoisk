@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewDTO {
-    private Long id;
+    private int id;
 
     @NotEmpty(message = "Assessment name shouldn't be empty")
     private double assessment;

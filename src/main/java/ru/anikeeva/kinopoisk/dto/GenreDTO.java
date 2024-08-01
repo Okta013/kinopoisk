@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GenreDTO {
-    private Long id;
+    private int id;
 
     @NotEmpty(message = "Name shouldn't be empty")
     @Size(min = 2, message = "Name should be longer than 2 symbols")

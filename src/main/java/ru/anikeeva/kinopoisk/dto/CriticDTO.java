@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CriticDTO {
-    private Long id;
+    private int id;
 
     @NotEmpty(message = "First name shouldn't be empty")
     @Size(min = 2, message = "First name should be longer than 2 symbols")

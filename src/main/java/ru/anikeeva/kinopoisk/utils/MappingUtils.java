@@ -1,5 +1,6 @@
 package ru.anikeeva.kinopoisk.utils;
 
+import org.springframework.stereotype.Component;
 import ru.anikeeva.kinopoisk.dto.CriticDTO;
 import ru.anikeeva.kinopoisk.dto.GenreDTO;
 import ru.anikeeva.kinopoisk.dto.MovieDTO;
@@ -9,8 +10,9 @@ import ru.anikeeva.kinopoisk.entities.Genre;
 import ru.anikeeva.kinopoisk.entities.Movie;
 import ru.anikeeva.kinopoisk.entities.Review;
 
+@Component
 public class MappingUtils {
-    public GenreDTO mapToClientDto(Genre genre){
+    public GenreDTO mapToGenreDTO(Genre genre) {
         GenreDTO dto = new GenreDTO();
         dto.setId(genre.getId());
         dto.setName(genre.getName());
@@ -18,7 +20,7 @@ public class MappingUtils {
         return dto;
     }
 
-    public Genre mapToClientEntity(GenreDTO dto){
+    public Genre mapToGenre(GenreDTO dto) {
         Genre genre = new Genre();
         genre.setId(dto.getId());
         genre.setName(dto.getName());
@@ -26,7 +28,7 @@ public class MappingUtils {
         return genre;
     }
 
-    public MovieDTO mapToClientDto(Movie movie){
+    public MovieDTO mapToMovieDTO(Movie movie) {
         MovieDTO dto = new MovieDTO();
         dto.setId(movie.getId());
         dto.setName(movie.getName());
@@ -37,7 +39,7 @@ public class MappingUtils {
         return dto;
     }
 
-    public Movie mapToClientEntity(MovieDTO dto){
+    public Movie mapToMovie(MovieDTO dto) {
         Movie movie = new Movie();
         movie.setId(dto.getId());
         movie.setName(dto.getName());
@@ -48,7 +50,7 @@ public class MappingUtils {
         return movie;
     }
 
-    public CriticDTO mapToClientDto(Critic critic){
+    public CriticDTO mapToCriticDTO(Critic critic) {
         CriticDTO dto = new CriticDTO();
         dto.setId(critic.getId());
         dto.setFirstName(critic.getFirstName());
@@ -57,7 +59,7 @@ public class MappingUtils {
         return dto;
     }
 
-    public Critic mapToClientEntity(CriticDTO dto){
+    public Critic mapToCritic(CriticDTO dto) {
         Critic critic = new Critic();
         critic.setId(dto.getId());
         critic.setFirstName(dto.getFirstName());
@@ -66,7 +68,7 @@ public class MappingUtils {
         return critic;
     }
 
-    public ReviewDTO mapToClientDto(Review review){
+    public ReviewDTO mapToReviewDTO(Review review) {
         ReviewDTO dto = new ReviewDTO();
         dto.setId(review.getId());
         dto.setAssessment(review.getAssessment());
@@ -75,7 +77,7 @@ public class MappingUtils {
         return dto;
     }
 
-    public Review mapToClientEntity(ReviewDTO dto){
+    public Review mapToReview(ReviewDTO dto) {
         Review review = new Review();
         review.setId(dto.getId());
         review.setAssessment(dto.getAssessment());
