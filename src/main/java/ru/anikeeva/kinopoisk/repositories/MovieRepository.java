@@ -8,7 +8,7 @@ import ru.anikeeva.kinopoisk.entities.Movie;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
-    //Page<Movie> findAll(Pageable pageable);
+    Page<Movie> findAll(Pageable pageable);
 
     Page<Movie> findByNameContainingIgnoreCaseOrderByNameAsc(String name, Pageable pageable);
 

@@ -21,8 +21,11 @@ public class MovieController {
     }
 
     @GetMapping
-    public List<MovieDTO> getAllMovies() {
-        return movieService.getAllMovies();
+    public Page<MovieDTO> getAllMovies(@RequestParam(required = false) String criteria,
+                                       @RequestParam(defaultValue = "asc") String sortDirection,
+                                       @RequestParam(defaultValue = "0") int page,
+                                       @RequestParam(defaultValue = "5") int size) {
+        return movieService.getAllMovies(criteria, sortDirection, PageRequest.of(page, size));
     }
 
     @GetMapping("/{id}")

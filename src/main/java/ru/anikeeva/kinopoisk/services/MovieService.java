@@ -2,7 +2,9 @@ package ru.anikeeva.kinopoisk.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.anikeeva.kinopoisk.dto.MovieDTO;
 import ru.anikeeva.kinopoisk.dto.ReviewDTO;
@@ -24,7 +26,7 @@ public class MovieService {
     private final ReviewRepository reviewRepository;
 
     @Autowired
-    public MovieService(MovieRepository movieRepository, MappingUtils mappingUtils, GenreRepository genreRepository, ReviewRepository reviewRepository) {
+    public MovieService(MovieRepository movieRepository, MappingUtils mappingUtils, ReviewRepository reviewRepository) {
         this.movieRepository = movieRepository;
         this.mappingUtils = mappingUtils;
         this.reviewRepository = reviewRepository;
@@ -37,10 +39,33 @@ public class MovieService {
         return mappingUtils.mapToMovieDTO(movie);
     }
 
-    public List<MovieDTO> getAllMovies() {
-        return movieRepository.findAll()
-                .stream().map(mappingUtils::mapToMovieDTO).collect(Collectors.toList());
-    }
+    public Page<MovieDTO> getAllMovies(String criteria, String sortDirection, Pageable pageable) {
+        if (Objects.isNull(criteria)) return movieRepository.findAll(pageable).map(mappingUtils::mapToMovieDTO);
+        else {
+            Pageable sortedPageable = null;
+            if (criteria.equals("name")) {
+                if (sortDirection.equals("asc"))
+                    sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                            Sort.by("name").ascending());
+                else sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                        Sort.by("name").descending());
+            } else if (criteria.equals("rating")) {
+                if (sortDirection.equals("asc"))
+                    sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                            Sort.by("rating").ascending());
+                else sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                        Sort.by("rating").descending());
+            } else if (criteria.equals("premiered")) {
+                if (sortDirection.equals("asc"))
+                    sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                            Sort.by("premiered").ascending());
+                else sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                        Sort.by("premiered").descending());
+            }
+            return movieRepository.findAll(sortedPageable).map(mappingUtils::mapToMovieDTO);
+            }
+        }
+
 
     public MovieDTO getMovieById(int id) {
         return mappingUtils.mapToMovieDTO(movieRepository.findById(id).orElse(null));
