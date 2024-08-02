@@ -7,7 +7,7 @@
     <changeSet id="create-data-genre" author="Ananan">
         <insert tableName="genre">
             <column name="name" value="Action" />
-            <column name="description" value="The main focus is on violence: shootings, fights, chases, etc. Most militants illustrate the well-known thesis "good must be with fists."" />
+            <column name="description" value="The main focus is on violence: shootings, fights, chases, etc. Most militants illustrate the well-known thesis good must be with fists." />
         </insert>
 
         <insert tableName="genre">

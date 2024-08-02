@@ -28,8 +28,8 @@ public class ReviewController {
     }
 
     @PostMapping("/new")
-    public ReviewDTO createReview(@RequestBody ReviewDTO reviewDTO) {
-        return reviewService.createReview(reviewDTO);
+    public ReviewDTO createReview(@RequestBody ReviewDTO reviewDTO, @RequestParam int movieId) {
+        return reviewService.createReview(reviewDTO, movieId);
     }
 
     @PutMapping("/{id}")

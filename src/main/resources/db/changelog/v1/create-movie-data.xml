@@ -9,7 +9,7 @@
             <column name="name" value="1+1" />
             <column name="description" value="An aristocrat in a wheelchair hires an ex-convict as a nurse. Sparkling French comedy with Omar Si" />
             <column name="duration" value="01:52:00" />
-            <column name="rating" value="" />
+            <column name="rating" value="5.0" />
             <column name="premiered" value="2011" />
             <column name="genre_id" value="8" />
         </insert>
@@ -27,7 +27,7 @@
             <column name="name" value="Escape from Shawshank" />
             <column name="description" value="The film tells the story of banker Andy Dufresne (Tim Robbins), who is sentenced to life in Shawshank State Penitentiary for the murders of his wife and her lover, despite his claims of innocence." />
             <column name="duration" value="02:22:00" />
-            <column name="rating" value="5" />
+            <column name="rating" value="5.0" />
             <column name="premiered" value="1994" />
             <column name="genre_id" value="5" />
         </insert>
@@ -90,7 +90,7 @@
             <column name="name" value="One Flew Over the Cuckoo's Nest" />
             <column name="description" value="American psychological drama film directed by Miloš Forman, based on the 1962 novel of the same name by Ken Kesey. " />
             <column name="duration" value="02:13:00" />
-            <column name="rating" value="" />
+            <column name="rating" value="4.6" />
             <column name="premiered" value="1975" />
             <column name="genre_id" value="6" />
         </insert>
