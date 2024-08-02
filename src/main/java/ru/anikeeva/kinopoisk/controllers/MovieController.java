@@ -1,10 +1,11 @@
 package ru.anikeeva.kinopoisk.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import ru.anikeeva.kinopoisk.dto.MovieDTO;
 import ru.anikeeva.kinopoisk.dto.ReviewDTO;
-import ru.anikeeva.kinopoisk.entities.Movie;
 import ru.anikeeva.kinopoisk.services.MovieService;
 
 import java.util.List;
@@ -47,5 +48,17 @@ public class MovieController {
     @GetMapping("/{id}/reviews")
     public List<ReviewDTO> getMovieReviews(@PathVariable int id) {
         return movieService.getReviews(id);
+    }
+
+    @GetMapping("/search")
+    public Page<MovieDTO> getMovies(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Integer premiered,
+            @RequestParam(required = false) Double rating,
+            @RequestParam(defaultValue = "asc") String sortDirection,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return movieService.searchMovies(name, premiered, rating, sortDirection, PageRequest.of(page, size));
     }
 }

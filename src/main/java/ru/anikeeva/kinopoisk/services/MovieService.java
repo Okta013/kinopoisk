@@ -1,6 +1,8 @@
 package ru.anikeeva.kinopoisk.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.anikeeva.kinopoisk.dto.MovieDTO;
 import ru.anikeeva.kinopoisk.dto.ReviewDTO;
@@ -12,6 +14,7 @@ import ru.anikeeva.kinopoisk.utils.MappingUtils;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,5 +64,26 @@ public class MovieService {
         Movie movie = mappingUtils.mapToMovie(getMovieById(id));
         return reviewRepository.findByMovie(movie)
                 .stream().map(mappingUtils::mapToReviewDTO).collect(Collectors.toList());
+    }
+
+    public Page<MovieDTO> searchMovies(String name, Integer premiered, Double rating, String sortDirection, Pageable pageable) {
+        if (Optional.ofNullable(name).isPresent() && sortDirection.equals("asc")) {
+            return movieRepository.findByNameContainingIgnoreCaseOrderByNameAsc(name, pageable).map(mappingUtils::mapToMovieDTO);
+        }
+        else if (Optional.ofNullable(name).isPresent() && sortDirection.equals("desc")){
+            return movieRepository.findByNameContainingIgnoreCaseOrderByNameDesc(name, pageable).map(mappingUtils::mapToMovieDTO);
+        }
+        else if (Optional.ofNullable(premiered).isPresent() && sortDirection.equals("asc")) {
+            return movieRepository.findByPremieredOrderByNameAsc(premiered, pageable).map(mappingUtils::mapToMovieDTO);
+        }
+        else if (Optional.ofNullable(premiered).isPresent() && sortDirection.equals("desc")) {
+            return movieRepository.findByPremieredOrderByNameDesc(premiered, pageable).map(mappingUtils::mapToMovieDTO);
+        }
+        else if (Optional.ofNullable(rating).isPresent() && sortDirection.equals("asc")) {
+            return movieRepository.findByRatingOrderByNameAsc(rating, pageable).map(mappingUtils::mapToMovieDTO);
+        }
+        else {
+            return movieRepository.findByRatingOrderByNameDesc(rating, pageable).map(mappingUtils::mapToMovieDTO);
+        }
     }
 }
