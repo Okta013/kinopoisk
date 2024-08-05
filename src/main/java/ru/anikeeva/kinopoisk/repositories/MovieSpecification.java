@@ -9,28 +9,28 @@ import ru.anikeeva.kinopoisk.entities.Movie;
 import java.util.Optional;
 
 public class MovieSpecification {
-    public static Specification<Movie> hasName(String name) {
-        return (Root<Movie> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) -> {
-            if(Optional.ofNullable(name).isEmpty()) return criteriaBuilder.conjunction();
-            else return criteriaBuilder.equal(root.get("name"), name);
-        };
-    }
-
-    public static Specification<Movie> hasRating(Double rating) {
-        return (Root<Movie> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) -> {
-            if (Optional.ofNullable(rating).isEmpty()) return criteriaBuilder.conjunction();
-            else
-                return criteriaBuilder.equal(root.get("rating"), rating);
-        };
-    }
-
-    public static Specification<Movie> hasPremiered(Integer premiered) {
-        return (Root<Movie> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) -> {
-            if (Optional.ofNullable(premiered).isEmpty()) return criteriaBuilder.conjunction();
-            else
-                return criteriaBuilder.equal(root.get("premiered"), premiered);
-        };
-    }
+//    public static Specification<Movie> hasName(String name) {
+//        return (Root<Movie> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) -> {
+//            if(Optional.ofNullable(name).isEmpty()) return criteriaBuilder.conjunction();
+//            else return criteriaBuilder.equal(root.get("name"), name);
+//        };
+//    }
+//
+//    public static Specification<Movie> hasRating(Double rating) {
+//        return (Root<Movie> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) -> {
+//            if (Optional.ofNullable(rating).isEmpty()) return criteriaBuilder.conjunction();
+//            else
+//                return criteriaBuilder.equal(root.get("rating"), rating);
+//        };
+//    }
+//
+//    public static Specification<Movie> hasPremiered(Integer premiered) {
+//        return (Root<Movie> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) -> {
+//            if (Optional.ofNullable(premiered).isEmpty()) return criteriaBuilder.conjunction();
+//            else
+//                return criteriaBuilder.equal(root.get("premiered"), premiered);
+//        };
+//    }
 
     public static Specification<Movie> hasRatingBetween(Double minRating, Double maxRating) {
         return (Root<Movie> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) -> {

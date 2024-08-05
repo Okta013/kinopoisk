@@ -43,26 +43,54 @@ public class MovieService {
         return mappingUtils.mapToMovieDTO(movie);
     }
 
-    public List<MovieDTO> getAllMovies(String name, Double rating, Integer premiered, Double minRating,
-                                       Double maxRating, Integer startYear, Integer endYear) {
-        if (Objects.isNull(name) && Objects.isNull(rating) && Objects.isNull(premiered)
-                && Objects.isNull(minRating) && Objects.isNull(maxRating)
+    public List<MovieDTO> getAllMovies(Double minRating, Double maxRating, Integer startYear,
+                                       Integer endYear, String sortCriteria, String sortDirection) {
+
+        Sort.Direction direction = null;
+        Sort sort = null;
+        if (Objects.nonNull(sortCriteria)) {
+            switch (sortDirection){
+                case "desc":
+                    direction = Sort.Direction.DESC;
+                    break;
+                default: direction = Sort.Direction.ASC;
+            }
+            switch (sortCriteria) {
+                case "name":
+                    sort = Sort.by(direction, "name");
+                    break;
+                case "premiered":
+                    sort = Sort.by(direction,"premiered");
+                    break;
+                case "rating":
+                    sort = Sort.by(direction,"rating");
+                    break;
+                default:
+                    sort = Sort.by(direction, "name");
+                    break;
+            }
+        }
+
+        if (Objects.isNull(minRating) && Objects.isNull(maxRating)
+                && Objects.isNull(startYear) && Objects.isNull(endYear) && Objects.isNull(sort)) {
+            return movieRepository.findAll()
+                    .stream().map(mappingUtils::mapToMovieDTO).collect(Collectors.toList());
+        }
+        else if (Objects.isNull(minRating) && Objects.isNull(maxRating)
                 && Objects.isNull(startYear) && Objects.isNull(endYear)) {
-            return movieRepository.findAll().stream().map(mappingUtils::mapToMovieDTO)
-                    .collect(Collectors.toList());
+            return movieRepository.findAll(sort)
+                    .stream().map(mappingUtils::mapToMovieDTO).collect(Collectors.toList());
         }
         else {
-            Specification<Movie> spec = Specification.where(MovieSpecification.hasName(name))
-                    .and(MovieSpecification.hasRating(rating))
-                    .and(MovieSpecification.hasPremiered(premiered))
-                    .and(MovieSpecification.hasRatingBetween(minRating, maxRating))
+            Specification<Movie> spec = Specification.where(MovieSpecification
+                            .hasRatingBetween(minRating, maxRating))
                     .and(MovieSpecification.isPremieredBetween(startYear, endYear));
-            return movieRepository.findAll(spec).stream().map(mappingUtils::mapToMovieDTO)
+            return movieRepository.findAll(spec, sort).stream().map(mappingUtils::mapToMovieDTO)
                     .collect(Collectors.toList());
         }
     }
 
-//    public Page<MovieDTO> getAllMovies(String criteria, String sortDirection, Pageable pageable) {
+//    public Page<MovieDTO> getAllMoviesSort(String criteria, String sortDirection, Pageable pageable) {
 //        if (Objects.isNull(criteria)) return movieRepository.findAll(pageable)
 //        .map(mappingUtils::mapToMovieDTO);
 //        else {
