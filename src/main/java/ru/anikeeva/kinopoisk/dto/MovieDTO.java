@@ -31,10 +31,10 @@ public class MovieDTO {
     @NotEmpty(message = "Duration shouldn't be empty")
     private LocalTime duration;
 
-    private double rating;
+    private Double rating;
 
     @NotEmpty(message = "Date of premiered shouldn't be empty")
-    private int premiered;
+    private Integer premiered;
 
     private List<Genre> declaredGenres = new ArrayList<>();
 

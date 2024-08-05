@@ -15,13 +15,11 @@ import java.util.stream.Collectors;
 @Service
 public class GenreService {
     private final GenreRepository genreRepository;
-    private final MovieRepository movieRepository;
     private final MappingUtils mappingUtils;
 
     @Autowired
-    public GenreService(GenreRepository genreRepository, MovieRepository movieRepository, MappingUtils mappingUtils) {
+    public GenreService(GenreRepository genreRepository, MappingUtils mappingUtils) {
         this.genreRepository = genreRepository;
-        this.movieRepository = movieRepository;
         this.mappingUtils = mappingUtils;
     }
 

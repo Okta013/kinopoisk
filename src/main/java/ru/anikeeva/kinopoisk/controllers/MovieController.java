@@ -29,13 +29,16 @@ public class MovieController {
 //    }
 
     @GetMapping
-    public List<MovieDTO> getMovies(@RequestParam(required = false) Double minRating,
+    public Page<MovieDTO> getMovies(@RequestParam(required = false) Double minRating,
                                     @RequestParam(required = false) Double maxRating,
                                     @RequestParam(required = false) Integer startYear,
                                     @RequestParam(required = false) Integer endYear,
-                                    @RequestParam(required = false) String sortCriteria,
-                                    @RequestParam(required = false) String sortDirection) {
-        return movieService.getAllMovies(minRating, maxRating, startYear, endYear, sortCriteria, sortDirection);
+                                    @RequestParam(defaultValue = "name") String sortCriteria,
+                                    @RequestParam(defaultValue = "asc") String sortDirection,
+                                    @RequestParam(defaultValue = "0") int page,
+                                    @RequestParam(defaultValue = "10") int size) {
+        return movieService.getAllMovies(minRating, maxRating, startYear, endYear,
+                sortCriteria, sortDirection, PageRequest.of(page, size));
     }
 
     @GetMapping("/{id}")

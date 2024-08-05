@@ -7,11 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import ru.anikeeva.kinopoisk.dto.GenreDTO;
 import ru.anikeeva.kinopoisk.dto.MovieDTO;
 import ru.anikeeva.kinopoisk.dto.ReviewDTO;
 import ru.anikeeva.kinopoisk.entities.Movie;
-import ru.anikeeva.kinopoisk.repositories.GenreRepository;
 import ru.anikeeva.kinopoisk.repositories.MovieRepository;
 import ru.anikeeva.kinopoisk.repositories.MovieSpecification;
 import ru.anikeeva.kinopoisk.repositories.ReviewRepository;
@@ -43,8 +41,9 @@ public class MovieService {
         return mappingUtils.mapToMovieDTO(movie);
     }
 
-    public List<MovieDTO> getAllMovies(Double minRating, Double maxRating, Integer startYear,
-                                       Integer endYear, String sortCriteria, String sortDirection) {
+    public Page<MovieDTO> getAllMovies(Double minRating, Double maxRating, Integer startYear,
+                                       Integer endYear, String sortCriteria, String sortDirection,
+                                       Pageable pageable) {
 
         Sort.Direction direction = null;
         Sort sort = null;
@@ -70,23 +69,21 @@ public class MovieService {
                     break;
             }
         }
+        Pageable sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
 
         if (Objects.isNull(minRating) && Objects.isNull(maxRating)
                 && Objects.isNull(startYear) && Objects.isNull(endYear) && Objects.isNull(sort)) {
-            return movieRepository.findAll()
-                    .stream().map(mappingUtils::mapToMovieDTO).collect(Collectors.toList());
+            return movieRepository.findAll(pageable).map(mappingUtils::mapToMovieDTO);
         }
         else if (Objects.isNull(minRating) && Objects.isNull(maxRating)
                 && Objects.isNull(startYear) && Objects.isNull(endYear)) {
-            return movieRepository.findAll(sort)
-                    .stream().map(mappingUtils::mapToMovieDTO).collect(Collectors.toList());
+            return movieRepository.findAll(sortedPageable).map(mappingUtils::mapToMovieDTO);
         }
         else {
             Specification<Movie> spec = Specification.where(MovieSpecification
                             .hasRatingBetween(minRating, maxRating))
                     .and(MovieSpecification.isPremieredBetween(startYear, endYear));
-            return movieRepository.findAll(spec, sort).stream().map(mappingUtils::mapToMovieDTO)
-                    .collect(Collectors.toList());
+            return movieRepository.findAll(spec, sortedPageable).map(mappingUtils::mapToMovieDTO);
         }
     }
 

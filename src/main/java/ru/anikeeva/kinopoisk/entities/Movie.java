@@ -31,10 +31,10 @@ public class Movie {
     private LocalTime duration;
 
     @Column(name="rating")
-    private double rating;
+    private Double rating;
 
     @Column(name="premiered")
-    private int premiered;
+    private Integer premiered;
 
     @ManyToMany
     @JoinTable(
