@@ -87,35 +87,6 @@ public class MovieService {
         }
     }
 
-//    public Page<MovieDTO> getAllMoviesSort(String criteria, String sortDirection, Pageable pageable) {
-//        if (Objects.isNull(criteria)) return movieRepository.findAll(pageable)
-//        .map(mappingUtils::mapToMovieDTO);
-//        else {
-//            Pageable sortedPageable = null;
-//            if (criteria.equals("name")) {
-//                if (sortDirection.equals("asc"))
-//                    sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
-//                            Sort.by("name").ascending());
-//                else sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
-//                        Sort.by("name").descending());
-//            } else if (criteria.equals("rating")) {
-//                if (sortDirection.equals("asc"))
-//                    sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
-//                            Sort.by("rating").ascending());
-//                else sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
-//                        Sort.by("rating").descending());
-//            } else if (criteria.equals("premiered")) {
-//                if (sortDirection.equals("asc"))
-//                    sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
-//                            Sort.by("premiered").ascending());
-//                else sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
-//                        Sort.by("premiered").descending());
-//            }
-//            return movieRepository.findAll(sortedPageable).map(mappingUtils::mapToMovieDTO);
-//            }
-//        }
-
-
     public MovieDTO getMovieById(int id) {
         return mappingUtils.mapToMovieDTO(movieRepository.findById(id).orElse(null));
     }
