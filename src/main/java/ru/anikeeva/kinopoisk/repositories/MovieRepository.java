@@ -16,6 +16,8 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer>, JpaSpecificationExecutor<Movie> {
 
+    List<Movie> findByDeclaredGenresIn(List<Genre> genres);
+
     Page<Movie> findAll(Pageable pageable);
 
     Page<Movie> findAll(Specification<Movie> spec, Pageable pageable);

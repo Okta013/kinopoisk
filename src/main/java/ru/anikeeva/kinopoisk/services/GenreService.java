@@ -5,10 +5,12 @@ import org.springframework.stereotype.Service;
 import ru.anikeeva.kinopoisk.dto.GenreDTO;
 import ru.anikeeva.kinopoisk.dto.MovieDTO;
 import ru.anikeeva.kinopoisk.entities.Genre;
+import ru.anikeeva.kinopoisk.entities.Movie;
 import ru.anikeeva.kinopoisk.repositories.GenreRepository;
 import ru.anikeeva.kinopoisk.repositories.MovieRepository;
 import ru.anikeeva.kinopoisk.utils.MappingUtils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,11 +18,14 @@ import java.util.stream.Collectors;
 public class GenreService {
     private final GenreRepository genreRepository;
     private final MappingUtils mappingUtils;
+    private final MovieRepository movieRepository;
 
     @Autowired
-    public GenreService(GenreRepository genreRepository, MappingUtils mappingUtils) {
+    public GenreService(GenreRepository genreRepository, MappingUtils mappingUtils,
+                        MovieRepository movieRepository) {
         this.genreRepository = genreRepository;
         this.mappingUtils = mappingUtils;
+        this.movieRepository = movieRepository;
     }
 
     public GenreDTO createGenre(GenreDTO genreDTO) {
@@ -51,8 +56,10 @@ public class GenreService {
         genreRepository.deleteById(id);
     }
 
-//    public List<MovieDTO> getAllMoviesByGenre(int id) {
-//        return movieRepository.findByGenre(id)
-//                .stream().map(mappingUtils::mapToMovieDTO).collect(Collectors.toList());
-//    }
+    public List<MovieDTO> getAllMoviesByGenre(int genreId) {
+        Genre genre = genreRepository.findById(genreId).orElseThrow(() ->
+                new RuntimeException("Genre not found"));
+        List<Movie> movies = movieRepository.findByDeclaredGenresIn(Collections.singletonList(genre));
+        return movies.stream().map(mappingUtils::mapToMovieDTO).collect(Collectors.toList());
+    }
 }

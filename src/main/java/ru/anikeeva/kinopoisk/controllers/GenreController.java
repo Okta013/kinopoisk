@@ -43,8 +43,8 @@ public class GenreController {
         genreService.deleteGenre(id);
     }
 
-//    @GetMapping("/{id}/movies")
-//    public List<MovieDTO> getMoviesGenres(@PathVariable int id) {
-//        return genreService.getAllMoviesByGenre(id);
-//    }
+    @GetMapping("/{id}/movies")
+    public List<MovieDTO> getMoviesGenres(@PathVariable("id") int genreId) {
+        return genreService.getAllMoviesByGenre(genreId);
+    }
 }
