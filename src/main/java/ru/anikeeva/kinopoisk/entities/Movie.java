@@ -45,4 +45,23 @@ public class Movie {
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> writtenReviews = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return name + ", " + premiered;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return id == movie.id;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        return result;
+    }
 }

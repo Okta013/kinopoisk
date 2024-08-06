@@ -36,4 +36,22 @@ public class ReviewDTO {
         this.message = message;
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return date + ", " + assessment;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ReviewDTO reviewDTO = (ReviewDTO) o;
+        return id == reviewDTO.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

@@ -32,4 +32,27 @@ public class GenreDTO {
         this.name = name;
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GenreDTO genreDTO = (GenreDTO) o;
+        if (id != genreDTO.id) return false;
+        if (name != null ? !name.equals(genreDTO.name) : genreDTO.name != null) return false;
+        return description != null ? description.equals(genreDTO.description) : genreDTO.description == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
+    }
 }

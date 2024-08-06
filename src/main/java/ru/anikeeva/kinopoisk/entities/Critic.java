@@ -31,4 +31,30 @@ public class Critic {
 
     @OneToMany(mappedBy = "critic", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> createdReviews = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return firstName + " " + secondName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Critic critic = (Critic) o;
+        if (id != critic.id) return false;
+        if (!firstName.equals(critic.firstName)) return false;
+        if (!secondName.equals(critic.secondName)) return false;
+        if (!about.equals(critic.about)) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + secondName.hashCode();
+        result = 31 * result + about.hashCode();
+        return result;
+    }
 }
